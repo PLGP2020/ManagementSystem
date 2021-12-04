@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller
+
+@Controller("agencyController")
 public class AgencyController {
 
     private AgencyService agencyService;
@@ -21,12 +23,13 @@ public class AgencyController {
     public AgencyController(AgencyService agencyService,AddressService addressService) {
         this.agencyService = agencyService;
         this.addressService = addressService;
-
     }
 
+
     @GetMapping("/agencies")
-    public String getAgencies(Model model) {
-        model.addAttribute("agencies",agencyService.getAgencies());
+    public String getAllAgencies(Model model) {
+        model.addAttribute("agency",agencyService.getAgencies());
+        model.addAttribute("address",addressService.getAddresses());
         return "agencies";
     }
 
@@ -40,16 +43,22 @@ public class AgencyController {
            return "newAgency";
     }
 
-    /* POST HTTP Request for put data to database*/
+    /* POST HTTP Request for put data to database */
     @PostMapping("/agencies/save")
     public String saveAgency(@ModelAttribute("agency") Agency agency,@ModelAttribute("address") Address address) {
-        System.out.println(agency.getPhoneNumber());
-        System.out.println(agency.getEmail());
 
-        agencyService.saveAgency(agency);
-        System.out.println(agency.getAddress().getPostalCode());
         addressService.saveAddress(address);
+        agency.setAddress(address);
+        agencyService.saveAgency(agency);
 
+        return "redirect:/agencies";
+    }
+
+    /* DELETE HTTP Request to delete one record of Agency table from database */
+    @GetMapping("/agencies/{id}")
+    public String deleteAgency(@PathVariable Long id) {
+        Agency deletedAgency = agencyService.findAgencyByID(id);
+        agencyService.deleteAgency(deletedAgency,id);
         return "redirect:/agencies";
     }
 

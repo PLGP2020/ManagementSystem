@@ -1,7 +1,6 @@
 package com.example.demo.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +17,7 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping
-    public List<Client> getAllClients(ClientService clientService) {
-        return clientService.getClients();
-    }
+
 
     /* GET HTTP  Request for list of clients from database */
     @GetMapping("/clients")
@@ -74,6 +70,12 @@ public class ClientController {
         updatedClient.setGender(client.getGender());
         clientService.editClient(updatedClient,id);
         return "redirect:/clients";
+    }
+
+    @GetMapping("/clients/info/{id}")
+    public String profilePanel(@PathVariable Long id, Model model)  {
+        model.addAttribute("client",clientService.findClientByID(id));
+        return "customerProfile";
     }
 
 }

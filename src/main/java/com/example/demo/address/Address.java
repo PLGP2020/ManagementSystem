@@ -17,7 +17,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "addressid",nullable = false)
+    @Column(name = "id",nullable = false)
     private Long id;
     @Column(name = "postalCode")
     private String postalCode;

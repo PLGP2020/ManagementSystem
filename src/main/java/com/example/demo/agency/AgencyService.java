@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("agencyService")
 public class AgencyService {
 
       private AgencyRepository agencyRepository;

@@ -1,9 +1,11 @@
-/*package com.example.demo.registration;
+package com.example.demo.registration;
 
-import com.example.demo.client.AppUserRole;
-import com.example.demo.client.Client;
-import com.example.demo.client.ClientService;
+import com.example.demo.user.SystemUser;
+import com.example.demo.user.SystemUserRole;
+import com.example.demo.user.SystemUserService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,32 +13,34 @@ import org.springframework.stereotype.Service;
 public class RegistrationService {
 
     /*   */
-  //  private final ClientService clientService;
+    @Autowired
+    private final SystemUserService systemUserService;
     /*  */
- //   private final EmailValidator emailValidator;
+    @Autowired
+    private final EmailValidator emailValidator;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     /* Method register new user to system  */
- //   public String register(RegistrationDTO request) {
+    public String register(RegistrationDTO request) {
+
         /* Check if Email is valid */
-      /*  boolean isValidEmail = emailValidator.test(request.getEmail());
+       /* boolean isValidEmail = emailValidator.test(request.getEmail());
         if(!isValidEmail) {
             throw new IllegalStateException("email not valid");
         } */
         /* This method uses clientService to register new client */
 
-
-
-     /*   return clientService.signUpClient(
-            new Client(
-                    request.getFirstName(),
-                    request.getLastName(),
+        return systemUserService.signUpUser(
+            new SystemUser(
+                    request.getName(),
+                    request.getUsername(),
+                    passwordEncoder.encode(request.getPassword()),
                     request.getEmail(),
-                    request.getPhoneNumber(),
-                    request.getLoginName(),
-                    request.getPassword(),
-                    AppUserRole.USER
+                    SystemUserRole.USER
             )
         );
 
     }
-} */
+}

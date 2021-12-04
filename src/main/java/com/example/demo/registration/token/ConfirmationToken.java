@@ -1,6 +1,8 @@
-/*package com.example.demo.registration.token;
+package com.example.demo.registration.token;
 
-import com.example.demo.client.Client;
+
+import com.example.demo.user.SystemUser;
+import com.example.demo.user.SystemUserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,19 +37,19 @@ public class ConfirmationToken {
    @ManyToOne
    @JoinColumn(
            nullable = false,
-           name = "client_id"
+           name = "user_id"
    )
-   private Client client;
+   private SystemUser systemUser;
 
    public ConfirmationToken(String token,
                               LocalDateTime createdAt,
                               LocalDateTime expiredAt,
                               LocalDateTime confirmedAt,
-                            Client client) {
+                            SystemUser systemUser) {
           this.token = token;
           this.createdAt = createdAt;
           this.expiredAt = expiredAt;
           this.confirmedAt = confirmedAt;
-          this.client = client;
+          this.systemUser= systemUser;
      }
-} */
+}

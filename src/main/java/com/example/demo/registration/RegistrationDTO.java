@@ -1,21 +1,21 @@
-/*package com.example.demo.registration;
+package com.example.demo.registration;
 
 import lombok.*;
 
 import java.io.Serializable;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class RegistrationDTO implements Serializable {
 
-      private  String firstName;
-      private  String phoneNumber;
-      private  String lastName;
-      private  String loginName;
-      private  String email;
+      private  String name;
+      private  String username;
       private  String password;
+      private  String email;
 
-} */
+
+}

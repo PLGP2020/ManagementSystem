@@ -1,5 +1,7 @@
 package com.example.demo.client;
 
+
+import com.example.demo.user.SystemUserRole;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,22 +26,18 @@ public class Client extends Person {
 
     @Column(name="age")
     private int age;
+    @Enumerated(EnumType.STRING)
     @Column(name="gender")
-    private String gender;
-    @Column(name="loginName")
-    private String loginName;
-    @Column(name="password")
-    private String password;
+    private Gender gender;
+
 
     public Client(String firstName, String lastName, String email,
-                  String phoneNumber, String loginName,String password,AppUserRole appUserRole) {
+                  String phoneNumber, String loginName, String password, SystemUserRole appUserRole) {
         super(firstName, lastName, email, phoneNumber);
-        this.loginName = loginName;
-        this.password = password;
     }
 
     public Client(String firstName, String lastName, String email,
-                  String phoneNumber, int age, String gender) {
+                  String phoneNumber, int age, Gender gender) {
         super(firstName, lastName, email, phoneNumber);
         this.age = age;
         this.gender = gender;

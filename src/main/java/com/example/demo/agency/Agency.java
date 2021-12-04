@@ -1,9 +1,11 @@
 package com.example.demo.agency;
 
 import com.example.demo.address.Address;
+import com.example.demo.employee.Employee;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "agency")
 @Table(name = "agency")
@@ -25,9 +27,14 @@ public class Agency {
     private String openHours;
     @Column(name = "email")
     private String email;
-    @OneToOne(fetch = FetchType.EAGER,optional = false)
-    @JoinColumn(name="addressid",nullable = false)
+    @OneToOne(fetch = FetchType.EAGER,optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name="addressid",referencedColumnName = "id",nullable = false)
     private Address address;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="employeeid",referencedColumnName = "id",nullable = false)
+    private List<Employee> employees;
+
 
     public Agency(String phoneNumber,String openHours, String email) {
          this.phoneNumber = phoneNumber;

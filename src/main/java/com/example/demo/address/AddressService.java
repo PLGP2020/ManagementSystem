@@ -1,6 +1,7 @@
 package com.example.demo.address;
 
 
+import com.example.demo.agency.Agency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,9 @@ public class AddressService {
 
     public Address editAddress(Address address,Long id) {
         return addressRepository.saveAndFlush(address);
+    }
+
+    public Address findAddressByID(Long id) {
+        return  addressRepository.getById(id);
     }
 }

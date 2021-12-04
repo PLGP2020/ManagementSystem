@@ -4,6 +4,7 @@ package com.example.demo.client;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,16 +21,15 @@ import java.util.List;
 public class ClientService {
 
 
-    private final static String USER_NOT_FOUND = "user with email %s not found";
+
+    @Autowired
     private final ClientRepository clientRepository;
 
-  //  private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     public List<Client> getClients() {
         return clientRepository.findAll();
     }
-
 
     public Client saveClient(Client client) {
      return  clientRepository.saveAndFlush(client);

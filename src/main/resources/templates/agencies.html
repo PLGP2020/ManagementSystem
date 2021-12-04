@@ -41,11 +41,12 @@
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
-            <th> City</th>
-            <th> Street</th>
-            <th> Postal Code </th>
-            <th> Phone Number </th>
+            <th> phoneNumber</th>
             <th> Email</th>
+            <th> Street </th>
+            <th> houseNumber </th>
+            <th> postalCode</th>
+            <th> Actions</th>
         </tr>
         </thead>
 
@@ -53,14 +54,12 @@
 
         <tr th:each="agency: ${agency}">
             <td th:text="${agency.phoneNumber}"></td>
-            <td th:text="${agency.openHours}"></td>
             <td th:text="${agency.email}"></td>
+            <td th:text="${agency.address.street}"></td>
+            <td th:text="${agency.address.streetNumber}"></td>
+            <td th:text="${agency.address.postalCode}"></td>
             <td>
-                <td th:each="address : ${address}">
-                    <td th:text="${address.street}"></td>
-                    <td th:text="${address.streetNumber}"></td>
-                    <td th:text="${address.postalCode}"></td>
-                </td>
+
                 <a th:href = "@{/agencies/edit/{id}(id=${agency.id})}"
                    class = "btn btn-primary">Update</a>
 
