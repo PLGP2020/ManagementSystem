@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/clients}">Client Management</a>
+                <a class="nav-link" th:href="@{/}">Back</a>
             </li>
         </ul>
     </div>
@@ -61,7 +61,7 @@
                    class = "btn btn-danger">Delete</a>
 
                 <a th:href = "@{/clients/info/{id}(id=${client.id})}"
-                   class = "btn btn-danger">Info</a>
+                   class = "btn btn-danger">View</a>
             </td>
         </tr>
         </tbody>

@@ -19,7 +19,7 @@ public class Trip {
     )
     private Long id;
     @Column(name = "Price")
-    private int price;
+    private double price;
 
 
 }

@@ -1,7 +1,6 @@
 package com.example.demo.security.config;
 
 
-
 import com.example.demo.user.SystemUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected final SystemUserService systemUserService;
+    @Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/registration**")
+                    .antMatchers("/**")
                     .permitAll()
                 .anyRequest()
                 .authenticated().and()

@@ -31,8 +31,7 @@ public class Agency {
     @JoinColumn(name="addressid",referencedColumnName = "id",nullable = false)
     private Address address;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="employeeid",referencedColumnName = "id",nullable = false)
+    @OneToMany(mappedBy="agency",cascade=CascadeType.ALL)
     private List<Employee> employees;
 
 

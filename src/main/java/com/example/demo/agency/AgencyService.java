@@ -16,25 +16,25 @@ public class AgencyService {
           this.agencyRepository = agencyRepository;
       }
 
-
-    public List<Agency> getAgencies() {
+      public List<Agency> getAgencies() {
         return agencyRepository.findAll();
     }
 
-
-    public Agency saveAgency(Agency agency) {
+      public Agency saveAgency(Agency agency) {
         return  agencyRepository.saveAndFlush(agency);
     }
 
-    public void deleteAgency(Agency agency,Long id) {
+      public void deleteAgency(Agency agency,Long id) {
         agencyRepository.deleteById(id);
     }
 
-    public Agency editAgency(Agency agency,Long id) {
+      public Agency editAgency(Agency agency,Long id) {
         return agencyRepository.saveAndFlush(agency);
     }
 
-    public Agency findAgencyByID(Long id) {
+      public Agency findAgencyByID(Long id) {
         return  agencyRepository.getById(id);
     }
+
+
 }

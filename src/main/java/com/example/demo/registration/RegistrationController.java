@@ -28,16 +28,8 @@ public class RegistrationController {
      @PostMapping("/registration")
      public String registerNewUser(@ModelAttribute("systemUser") RegistrationDTO registrationDTO) {
 
-           System.out.println(registrationDTO.getName());
-           System.out.println(registrationDTO.getUsername());
-           System.out.println(registrationDTO.getPassword());
-           System.out.println(registrationDTO.getEmail());
-
-           try {
                registrationService.register(registrationDTO);
-           }catch(NullPointerException exception) {
-               exception.printStackTrace();
-           }
+
            return "redirect:/registration?success";
      }
 

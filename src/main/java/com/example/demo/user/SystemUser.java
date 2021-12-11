@@ -39,7 +39,8 @@ public class SystemUser implements UserDetails {
          private boolean locked;
          private boolean enabled;
 
-    public SystemUser(String name, String username, String password, String email,SystemUserRole appUserRole) {
+    public SystemUser(String name, String username, String password, String email,
+                      SystemUserRole appUserRole) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -84,4 +85,5 @@ public class SystemUser implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
 }

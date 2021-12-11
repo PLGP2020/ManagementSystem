@@ -19,8 +19,6 @@ public class RegistrationService {
     @Autowired
     private final EmailValidator emailValidator;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
     /* Method register new user to system  */
     public String register(RegistrationDTO request) {
@@ -32,11 +30,11 @@ public class RegistrationService {
         } */
         /* This method uses clientService to register new client */
 
-        return systemUserService.signUpUser(
+        return systemUserService.signUpNewUser(
             new SystemUser(
                     request.getName(),
                     request.getUsername(),
-                    passwordEncoder.encode(request.getPassword()),
+                    request.getPassword(),
                     request.getEmail(),
                     SystemUserRole.USER
             )

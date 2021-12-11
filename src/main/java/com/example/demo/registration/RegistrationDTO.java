@@ -18,4 +18,5 @@ public class RegistrationDTO implements Serializable {
       private  String email;
 
 
+
 }

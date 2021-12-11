@@ -5,6 +5,7 @@ import com.example.demo.user.SystemUserRole;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
@@ -21,7 +22,7 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Client extends Person {
+public class Client extends Person implements Serializable {
 
 
     @Column(name="age")
@@ -29,6 +30,7 @@ public class Client extends Person {
     @Enumerated(EnumType.STRING)
     @Column(name="gender")
     private Gender gender;
+    private String imageUrl;
 
 
     public Client(String firstName, String lastName, String email,
@@ -37,10 +39,11 @@ public class Client extends Person {
     }
 
     public Client(String firstName, String lastName, String email,
-                  String phoneNumber, int age, Gender gender) {
+                  String phoneNumber, int age, Gender gender,String imageUrl) {
         super(firstName, lastName, email, phoneNumber);
         this.age = age;
         this.gender = gender;
+        this.imageUrl = imageUrl;
     }
 
 
